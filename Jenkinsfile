@@ -4,23 +4,19 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git branch: 'main', url: 'https://github.com/Kanchannishad/docker-webapp.git'
+                git 'https://github.com/Kanchannishad/docker-webapp.git'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                script {
-                    sh 'docker-compose build'
-                }
+                bat 'docker build -t docker-webapp .'
             }
         }
 
         stage('Run Docker Containers') {
             steps {
-                script {
-                    sh 'docker-compose up -d'
-                }
+                bat 'docker run -d -p 8081:80 docker-webapp'
             }
         }
     }
