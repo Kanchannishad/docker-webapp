@@ -4,7 +4,9 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/Kanchannishad/docker-webapp.git'
+                git branch: 'main',
+                    credentialsId: '2efecf4d-abd3-4e84-ad0f-65dc8bbf65f5',
+                    url: 'https://github.com/Kanchannishad/docker-webapp.git'
             }
         }
 
